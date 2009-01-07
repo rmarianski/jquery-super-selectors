@@ -1,0 +1,7 @@
+Super Selectors is a jQuery plugin enabling better CSS selector support for older browsers
+
+TODO:
+* Finish demo page
+* Create test page (should use embedded, linked, and imported stylesheets)
+* See whether document.styleSheets[index].cssText would be faster for IE, and if so, use it when available
+* Look at whether there are better ways to get at the style information than looping through every rule for every referenced stylesheet
