@@ -192,9 +192,8 @@
 
 		function ruleIterator(sheet) {
 			var css = sheet.cssRules;
-			for(rule=0;rule<css.length;rule++) {
-				//if(css[rule].styleSheet) ruleIterator(css[rule].styleSheet);
-				if(css[rule].styleSheet) alert(css[rule].styleSheet);
+			for(var rule=0;rule<css.length;rule++) {
+				if(css[rule].styleSheet) ruleIterator(css[rule].styleSheet);
 				if(css[rule].selectorText == null) continue;
 				getMatches(css[rule].selectorText);
 			}
