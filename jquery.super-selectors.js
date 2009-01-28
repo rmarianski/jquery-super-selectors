@@ -12,6 +12,13 @@
 (function($){
   $.fn.superSelectify = function(options) {
 
+	// Safari loads things in parallel, so we have to wait for everything to finish before proceeding
+	// otherwise it thinks there are no stylesheets
+   if (jQuery.browser.safari && document.readyState != "complete"){
+     setTimeout( arguments.callee, 100 );
+     return;
+   }
+
   var defaults = {
 	 emptyClass: "empty",
 	 firstClass: "first",
@@ -58,6 +65,70 @@
 	var resetInputMatches = [];
 	var buttonInputMatches = [];
 	var fileInputMatches = [];
+	
+	function getMatches(CSS) {
+		
+		var emptyMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:empty/gi);
+		if(emptyMatch) emptyMatches[emptyMatches.length]=emptyMatch;
+
+		var firstMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:first[^-]/gi);
+		if(firstMatch) firstMatches[firstMatches.length]=firstMatch;
+
+		var lastMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:last[^-]/gi);
+		if(lastMatch) lastMatches[lastMatches.length]=lastMatch;
+
+		var oddMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:nth-child(odd)/gi);
+		if(oddMatch) oddMatches[oddMatches.length]=oddMatch;
+
+		var evenMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:nth-child(even)/gi);
+		if(evenMatch) evenMatches[evenMatches.length]=evenMatch;
+
+		var nextMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\+\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
+		if(nextMatch) nextMatches[nextMatches.length]=nextMatch;
+
+		var siblingMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\~\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
+		if(siblingMatch) siblingMatches[siblingMatches.length]=siblingMatch;
+
+		var firstChildMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:first-child/gi);
+		if(firstChildMatch) firstChildMatches[firstChildMatches.length]=firstChildMatch;
+
+		var lastChildMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:last-child/gi);
+		if(lastChildMatch) lastChildMatches[lastChildMatches.length]=lastChildMatch;
+
+		var onlyChildMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:only-child/gi);
+		if(onlyChildMatch) onlyChildMatches[onlyChildMatches.length]=onlyChildMatch;
+
+		var directChildMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\>\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
+		if(directChildMatch) directChildMatches[directChildMatches.length]=directChildMatch;
+
+		var textInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="text"\]/gi);
+		if(textInputMatch) textInputMatches[textInputMatches.length]=textInputMatch;
+
+		var passwordInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="password"\]/gi);
+		if(passwordInputMatch) passwordInputMatches[passwordInputMatches.length]=passwordInputMatch;
+
+		var radioInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="radio"\]/gi);
+		if(radioInputMatch) radioInputMatches[radioInputMatches.length]=radioInputMatch;
+
+		var checkboxInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="checkbox"\]/gi);
+		if(checkboxInputMatch) checkboxInputMatches[checkboxInputMatches.length]=checkboxInputMatch;
+
+		var submitInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="submit"\]/gi);
+		if(submitInputMatch) submitInputMatches[submitInputMatches.length]=submitInputMatch;
+
+		var imageInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="image"\]/gi);
+		if(imageInputMatch) imageInputMatches[imageInputMatches.length]=imageInputMatch;
+
+		var resetInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="reset"\]/gi);
+		if(resetInputMatch) resetInputMatches[resetInputMatches.length]=resetInputMatch;
+
+		var buttonInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*button/gi);
+		if(buttonInputMatch) buttonInputMatches[buttonInputMatches.length]=buttonInputMatch;
+
+		var fileInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="file"\]/gi);
+		if(fileInputMatch) fileInputMatches[fileInputMatches.length]=fileInputMatch;
+		
+	}
 	
 	if($.browser.msie) {
 		// Internet Explorer requires quite a bit more handholding.
@@ -115,135 +186,22 @@
 	    }	
 		}
 
-		var emptyMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:empty/gi);
-		if(emptyMatch) emptyMatches[emptyMatches.length]=emptyMatch;
-
-		var firstMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:first/gi);
-		if(firstMatch) firstMatches[firstMatches.length]=firstMatch;
-
-		var lastMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:last/gi);
-		if(lastMatch) lastMatches[lastMatches.length]=lastMatch;
-
-		var oddMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:nth-child(odd)/gi);
-		if(oddMatch) oddMatches[oddMatches.length]=oddMatch;
-
-		var evenMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:nth-child(even)/gi);
-		if(evenMatch) evenMatches[evenMatches.length]=evenMatch;
-
-		var nextMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\+\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
-		if(nextMatch) nextMatches[nextMatches.length]=nextMatch;
-
-		var siblingMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\~\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
-		if(siblingMatch) siblingMatches[siblingMatches.length]=siblingMatch;
-
-		var firstChildMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:first-child/gi);
-		if(firstChildMatch) alert(firstChildMatch);
-		if(firstChildMatch) firstChildMatches[firstChildMatches.length]=firstChildMatch;
-
-		var lastChildMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:last-child/gi);
-		if(lastChildMatch) lastChildMatches[lastChildMatches.length]=lastChildMatch;
-
-		var onlyChildMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:only-child/gi);
-		if(onlyChildMatch) onlyChildMatches[onlyChildMatches.length]=onlyChildMatch;
-
-		var directChildMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\>\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
-		if(directChildMatch) directChildMatches[directChildMatches.length]=directChildMatch;
-
-		var textInputMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="text"\]/gi);
-		if(textInputMatch) textInputMatches[textInputMatches.length]=textInputMatch;
-
-		var passwordInputMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="password"\]/gi);
-		if(passwordInputMatch) passwordInputMatches[passwordInputMatches.length]=passwordInputMatch;
-
-		var radioInputMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="radio"\]/gi);
-		if(radioInputMatch) radioInputMatches[radioInputMatches.length]=radioInputMatch;
-
-		var checkboxInputMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="checkbox"\]/gi);
-		if(checkboxInputMatch) checkboxInputMatches[checkboxInputMatches.length]=checkboxInputMatch;
-
-		var submitInputMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="submit"\]/gi);
-		if(submitInputMatch) submitInputMatches[submitInputMatches.length]=submitInputMatch;
-
-		var imageInputMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="image"\]/gi);
-		if(imageInputMatch) imageInputMatches[imageInputMatches.length]=imageInputMatch;
-
-		var resetInputMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="reset"\]/gi);
-		if(resetInputMatch) resetInputMatches[resetInputMatches.length]=resetInputMatch;
-
-		var buttonInputMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*button/gi);
-		if(buttonInputMatch) buttonInputMatches[buttonInputMatches.length]=buttonInputMatch;
-
-		var fileInputMatch = allCSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="file"\]/gi);
-		if(fileInputMatch) fileInputMatches[fileInputMatches.length]=fileInputMatch;
+		getMatches(allCSS);
 
 	} else { //all other browsers
-		// [FIXME] is there *really* no better way to do this than iterating through every rule of every stylesheet? document.styleSheets[index].cssText would be a great candidate, but it only works on IE
-		for(stylesheet=0;stylesheet<document.styleSheets.length;stylesheet++) {
-			var sheet=document.styleSheets[stylesheet];					
+
+		function ruleIterator(sheet) {
 			var css = sheet.cssRules;
-				for(rule=0;rule<css.length;rule++) {
-					if(css[rule].styleSheet) alert(css[rule].styleSheet);
-					if(css[rule].selectorText == null) continue;
-					var emptyMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*:empty/gi);
-				  if(emptyMatch) emptyMatches[emptyMatches.length]=emptyMatch;
-			
-			  	var firstMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*:first /gi);
-					if(firstMatch) firstMatches[firstMatches.length]=firstMatch;
-
-					var lastMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*:last /gi);
-					if(lastMatch) lastMatches[lastMatches.length]=lastMatch;
-
-					var oddMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*:nth-child(odd)/gi);
-					if(oddMatch) oddMatches[oddMatches.length]=oddMatch;
-
-					var evenMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*:nth-child(even)/gi);
-					if(evenMatch) evenMatches[evenMatches.length]=evenMatch;
-
-					var nextMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\+\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
-					if(nextMatch) nextMatches[nextMatches.length]=nextMatch;
-
-					var siblingMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\~\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
-					if(siblingMatch) siblingMatches[siblingMatches.length]=siblingMatch;
-
-					var firstChildMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*:first-child/gi);
-					if(firstChildMatch) firstChildMatches[firstChildMatches.length]=firstChildMatch;
-
-					var lastChildMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*:last-child/gi);
-					if(lastChildMatch) lastChildMatches[lastChildMatches.length]=lastChildMatch;
-
-					var onlyChildMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*:only-child/gi);
-					if(onlyChildMatch) onlyChildMatches[onlyChildMatches.length]=onlyChildMatch;
-
-					var directChildMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\>\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
-					if(directChildMatch) directChildMatches[directChildMatches.length]=directChildMatch;
-				
-					var textInputMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="text"\]/gi);
-					if(textInputMatch) textInputMatches[textInputMatches.length]=textInputMatch;
-
-					var passwordInputMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="password"\]/gi);
-					if(passwordInputMatch) passwordInputMatches[passwordInputMatches.length]=passwordInputMatch;
-
-					var radioInputMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="radio"\]/gi);
-					if(radioInputMatch) radioInputMatches[radioInputMatches.length]=radioInputMatch;
-
-					var checkboxInputMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="checkbox"\]/gi);
-					if(checkboxInputMatch) checkboxInputMatches[checkboxInputMatches.length]=checkboxInputMatch;
-
-					var submitInputMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="submit"\]/gi);
-					if(submitInputMatch) submitInputMatches[submitInputMatches.length]=submitInputMatch;
-
-					var imageInputMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="image"\]/gi);
-					if(imageInputMatch) imageInputMatches[imageInputMatches.length]=imageInputMatch;
-
-					var resetInputMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="reset"\]/gi);
-					if(resetInputMatch) resetInputMatches[resetInputMatches.length]=resetInputMatch;
-
-					var buttonInputMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*button/gi);
-					if(buttonInputMatch) buttonInputMatches[buttonInputMatches.length]=buttonInputMatch;
-
-					var fileInputMatch = css[rule].selectorText.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="file"\]/gi);
-					if(fileInputMatch) fileInputMatches[fileInputMatches.length]=fileInputMatch;
+			for(rule=0;rule<css.length;rule++) {
+				//if(css[rule].styleSheet) ruleIterator(css[rule].styleSheet);
+				if(css[rule].styleSheet) alert(css[rule].styleSheet);
+				if(css[rule].selectorText == null) continue;
+				getMatches(css[rule].selectorText);
 			}
+		}
+
+		for(stylesheet=0;stylesheet<document.styleSheets.length;stylesheet++) {
+			ruleIterator(document.styleSheets[stylesheet]);
 		};
 	}
 
