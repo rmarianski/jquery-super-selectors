@@ -5,3 +5,27 @@ TODO:
 * Create test page (should use embedded, linked, and imported stylesheets)
 * See whether document.styleSheets[index].cssText would be faster for IE, and if so, use it when available
 * Look at whether there are better ways to get at the style information than looping through every rule for every referenced stylesheet
+
+
+WARNING:
+IE has a "fun" habit of discarding any style rules which contain selectors it cannot parse. This can cause unintended results. The only reliable workaround I've found is to declare your rules twice, so that the super-selector version will still be applied.
+
+So, instead of 
+
+	div.example > :first-child,
+	div.example .first-child {
+	background: #0f0;
+	color: #f0f;
+	}
+
+You should write:
+
+	div.example > :first-child {
+	background: #0f0;
+	color: #f0f;
+	}
+
+	div.example .first-child {
+	background: #0f0;
+	color: #f0f;
+	}
