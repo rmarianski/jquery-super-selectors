@@ -150,7 +150,7 @@
   function ruleIterator(sheet) {
     var css = sheet.cssRules;
     for(var rule=0;rule<css.length;rule++) {
-      if(css[rule].styleSheet) ruleIterator(css[rule].styleSheet);
+      if(css[rule].styleSheet) getCSS(css[rule].styleSheet);
       if(css[rule].selectorText == null) continue;
       getMatches(css[rule].selectorText);
     }
