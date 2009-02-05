@@ -44,188 +44,134 @@
   
   var options = $.extend(defaults, options);
 
-	// Initialize Arrays for storing Matches
-	var emptyMatches = [];
-	var firstMatches = [];
-	var lastMatches = [];
-	var oddMatches = [];
-	var evenMatches = [];
-	var nextMatches = [];
-	var siblingMatches = [];
-	var firstChildMatches = [];
-	var lastChildMatches = [];
-	var onlyChildMatches = [];
-	var directChildMatches = [];
-	var textInputMatches = [];
-	var passwordInputMatches = [];
-	var radioInputMatches = [];
-	var checkboxInputMatches = [];
-	var submitInputMatches = [];
-	var imageInputMatches = [];
-	var resetInputMatches = [];
-	var buttonInputMatches = [];
-	var fileInputMatches = [];
 	
 	function getMatches(CSS) {
 		
 		var emptyMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:empty/gi);
-		if(emptyMatch) emptyMatches[emptyMatches.length]=emptyMatch;
+		if(emptyMatch) emptyMatch=emptyMatch.join(", ");
 
 		var firstMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:first[^-]/gi);
-		if(firstMatch) firstMatches[firstMatches.length]=firstMatch;
+		if(firstMatch) firstMatch=firstMatch.join(", ");
 
 		var lastMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:last[^-]/gi);
-		if(lastMatch) lastMatches[lastMatches.length]=lastMatch;
+		if(lastMatch) lastMatch=lastMatch.join(", ");
 
 		var oddMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:nth-child(odd)/gi);
-		if(oddMatch) oddMatches[oddMatches.length]=oddMatch;
+		if(oddMatch) oddMatch=oddMatch.join(", ");
 
 		var evenMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:nth-child(even)/gi);
-		if(evenMatch) evenMatches[evenMatches.length]=evenMatch;
+		if(evenMatch) evenMatch=evenMatch.join(", ");
 
 		var nextMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\+\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
-		if(nextMatch) nextMatches[nextMatches.length]=nextMatch;
+		if(nextMatch) nextMatch=nextMatch.join(", ");
 
 		var siblingMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\~\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
-		if(siblingMatch) siblingMatches[siblingMatches.length]=siblingMatch;
+		if(siblingMatch) siblingMatch=siblingMatch.join(", ");
 
 		var firstChildMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:first-child/gi);
-		if(firstChildMatch) firstChildMatches[firstChildMatches.length]=firstChildMatch;
+		if(firstChildMatch) firstChildMatch=firstChildMatch.join(", ");
 
 		var lastChildMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:last-child/gi);
-		if(lastChildMatch) lastChildMatches[lastChildMatches.length]=lastChildMatch;
+		if(lastChildMatch) lastChildMatch=lastChildMatch.join(", ");
 
 		var onlyChildMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*:only-child/gi);
-		if(onlyChildMatch) onlyChildMatches[onlyChildMatches.length]=onlyChildMatch;
+		if(onlyChildMatch) onlyChildMatch=onlyChildMatch.join(", ");
 
 		var directChildMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*?\>\s?[a-zA-Z0-9\.-_\+\~#]*/gi);
-		if(directChildMatch) directChildMatches[directChildMatches.length]=directChildMatch;
+		//if(directChildMatch) directChildMatch=directChildMatch.join(", ");
+		
 
 		var textInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="text"\]/gi);
-		if(textInputMatch) textInputMatches[textInputMatches.length]=textInputMatch;
+		if(textInputMatch) textInputMatch=textInputMatch.join(", ");
 
 		var passwordInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="password"\]/gi);
-		if(passwordInputMatch) passwordInputMatches[passwordInputMatches.length]=passwordInputMatch;
+		if(passwordInputMatch) passwordInputMatch=passwordInputMatch.join(", ");
 
 		var radioInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="radio"\]/gi);
-		if(radioInputMatch) radioInputMatches[radioInputMatches.length]=radioInputMatch;
+		if(radioInputMatch) radioInputMatch=radioInputMatch.join(", ");
 
 		var checkboxInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="checkbox"\]/gi);
-		if(checkboxInputMatch) checkboxInputMatches[checkboxInputMatches.length]=checkboxInputMatch;
+		if(checkboxInputMatch) checkboxInputMatch=checkboxInputMatch.join(", ");
 
 		var submitInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="submit"\]/gi);
-		if(submitInputMatch) submitInputMatches[submitInputMatches.length]=submitInputMatch;
+		if(submitInputMatch) submitInputMatch=submitInputMatch.join(", ");
 
 		var imageInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="image"\]/gi);
-		if(imageInputMatch) imageInputMatches[imageInputMatches.length]=imageInputMatch;
+		if(imageInputMatch) imageInputMatch=imageInputMatch.join(", ");
 
 		var resetInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="reset"\]/gi);
-		if(resetInputMatch) resetInputMatches[resetInputMatches.length]=resetInputMatch;
+		if(resetInputMatch) resetInputMatch=resetInputMatch.join(", ");
 
 		var buttonInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*button/gi);
-		if(buttonInputMatch) buttonInputMatches[buttonInputMatches.length]=buttonInputMatch;
+		if(buttonInputMatch) buttonInputMatch=buttonInputMatch.join(", ");
 
 		var fileInputMatch = CSS.match(/[a-zA-Z0-9\.-_\+\~#\s]*input\[type="file"\]/gi);
-		if(fileInputMatch) fileInputMatches[fileInputMatches.length]=fileInputMatch;
+		if(fileInputMatch) fileInputMatch=fileInputMatch.join(", ");
 		
+		var importedCSS = CSS.match(/([a-zA-Z0-9\.\-_\+]*.css)/gi);
+
+    if (importedCSS) {
+      var fakeStyleSheet = [];
+      for (stylesheet=0;stylesheet<importedCSS.length;stylesheet++) {
+        fakeStyleSheet['href'] = importedCSS[stylesheet];
+        getCSS(fakeStyleSheet);
+	    }  
+		}
+
+
+		// Add classes to all matched elements
+		$(emptyMatch).addClass(options.emptyClass);	
+		$(firstMatch).addClass(options.firstClass);
+		$(lastMatch).addClass(options.lastClass);
+		$(oddMatch).addClass(options.oddClass);
+		$(evenMatch).addClass(options.evenClass);
+		$(nextMatch).addClass(options.nextClass);
+		$(siblingMatch).addClass(options.siblingClass);
+		$(firstChildMatch).addClass(options.firstChildClass);
+		$(lastChildMatch).addClass(options.lastChildClass);
+		$(onlyChildMatch).addClass(options.onlyChildClass);
+		$(directChildMatch).addClass(options.directChildClass);
+		$(lastChildMatch).addClass(options.lastChildClass);
+		$(textInputMatch).addClass(options.textInputClass);
+		$(passwordInputMatch).addClass(options.passwordInputClass);
+		$(radioInputMatch).addClass(options.radioInputClass);
+		$(checkboxInputMatch).addClass(options.checkboxInputClass);
+		$(submitInputMatch).addClass(options.submitInputClass);
+		$(imageInputMatch).addClass(options.imageInputClass);
+		$(resetInputMatch).addClass(options.resetInputClass);
+		$(buttonInputMatch).addClass(options.buttonInputClass);
+		$(fileInputMatch).addClass(options.fileInputClass);	
+	}
+
+
+	function ruleIterator(sheet) {
+		var css = sheet.cssRules;
+		for(var rule=0;rule<css.length;rule++) {
+			if(css[rule].styleSheet) ruleIterator(css[rule].styleSheet);
+			if(css[rule].selectorText == null) continue;
+			getMatches(css[rule].selectorText);
+		}
 	}
 	
-	if($.browser.msie) {
-		// Internet Explorer requires quite a bit more handholding.
-		// Among other charming quirks, it replaces all unknown selectors with "UNKNOWN"
-		// So we have to load all the CSS separately. 
-		var thisCSS = "";
-		var allCSS = "";
-		try {
-		  var httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-		} catch (e) {
-		  // ActiveX disabled
-		}
-		var RELATIVE = /^[\w\.]+[^:]*$/;
-		function makePath(href, path) {
-		  if (RELATIVE.test(href)) href = (path || "") + href;
-		  return href;
-		};
-
-		function getPath(href, path) {
-		  href = makePath(href, path);
-		  return href.slice(0, href.lastIndexOf("/") + 1);
-		};
-
-		function getCSS(stylesheet) {
-			if (stylesheet.href) {
-				var RELATIVE = /^[\w\.]+[^:]*$/;
-				var docURL = String(window.location);
-				var href = (RELATIVE.test(stylesheet.href)) ? (docURL.slice(0, docURL.lastIndexOf("/") + 1) + stylesheet.href) : stylesheet.href;
-				try {
-				    httpRequest.open("GET", href, false);
-				    httpRequest.send();
-				    if (httpRequest.status == 0 || httpRequest.status == 200) {
-				      thisCSS = httpRequest.responseText;
-				    }
-				} catch (e) {
-				  // ignore errors
-				};
+	function getCSS(sheet) {
+		if(sheet.href) {
+			var RELATIVE = /^[\w\.]+[^:]*$/;
+			var docURL = String(window.location);
+			var href = (RELATIVE.test(sheet.href)) ? (docURL.slice(0, docURL.lastIndexOf("/") + 1) + sheet.href) : sheet.href;
+			$.ajax({ url: href, success: function(response){ getMatches(response); } });
+		} else {
+			if(sheet.cssText) {
+				getMatches(sheet.cssText);
 			} else {
-				thisCSS = stylesheet.cssText;
+				ruleIterator(sheet);
 			}
-			return thisCSS;
-		};
-
-		for (stylesheet=0;stylesheet<document.styleSheets.length;stylesheet++) {
-      allCSS += getCSS(document.styleSheets[stylesheet]);
-    }
-
-		var importedCSS = allCSS.match(/([a-zA-Z0-9\.\-_\+]*.css)/gi);
-
-		if (importedCSS) {
-			var fakeStyleSheet = [];
-			for (stylesheet=0;stylesheet<importedCSS.length;stylesheet++) {
-				fakeStyleSheet['href'] = importedCSS[stylesheet];
-				allCSS += getCSS(fakeStyleSheet);
-	    }	
-		}
-
-		getMatches(allCSS);
-
-	} else { //all other browsers
-
-		function ruleIterator(sheet) {
-			var css = sheet.cssRules;
-			for(var rule=0;rule<css.length;rule++) {
-				if(css[rule].styleSheet) ruleIterator(css[rule].styleSheet);
-				if(css[rule].selectorText == null) continue;
-				getMatches(css[rule].selectorText);
-			}
-		}
-
-		for(stylesheet=0;stylesheet<document.styleSheets.length;stylesheet++) {
-			ruleIterator(document.styleSheets[stylesheet]);
-		};
+		}	
 	}
 
-	// Add classes to all matched elements
-	$(emptyMatches.join(", ")).addClass(options.emptyClass);	
-	$(firstMatches.join(", ")).addClass(options.firstClass);
-	$(lastMatches.join(", ")).addClass(options.lastClass);
-	$(oddMatches.join(", ")).addClass(options.oddClass);
-	$(evenMatches.join(", ")).addClass(options.evenClass);
-	$(nextMatches.join(", ")).addClass(options.nextClass);
-	$(siblingMatches.join(", ")).addClass(options.siblingClass);
-	$(firstChildMatches.join(", ")).addClass(options.firstChildClass);
-	$(lastChildMatches.join(", ")).addClass(options.lastChildClass);
-	$(onlyChildMatches.join(", ")).addClass(options.onlyChildClass);
-	$(directChildMatches.join(", ")).addClass(options.directChildClass);
-	$(lastChildMatches.join(", ")).addClass(options.lastChildClass);
-	$(textInputMatches.join(", ")).addClass(options.textInputClass);
-	$(passwordInputMatches.join(", ")).addClass(options.passwordInputClass);
-	$(radioInputMatches.join(", ")).addClass(options.radioInputClass);
-	$(checkboxInputMatches.join(", ")).addClass(options.checkboxInputClass);
-	$(submitInputMatches.join(", ")).addClass(options.submitInputClass);
-	$(imageInputMatches.join(", ")).addClass(options.imageInputClass);
-	$(resetInputMatches.join(", ")).addClass(options.resetInputClass);
-	$(buttonInputMatches.join(", ")).addClass(options.buttonInputClass);
-	$(fileInputMatches.join(", ")).addClass(options.fileInputClass);
+	for(stylesheet=0;stylesheet<document.styleSheets.length;stylesheet++) {
+		getCSS(document.styleSheets[stylesheet]);
+	};
+
 	
 };
 
