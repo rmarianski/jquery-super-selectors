@@ -3,7 +3,7 @@ Super Selectors is a jQuery plugin enabling better CSS selector support for olde
 TODO:
 * Finish demo page
 * Create test page (should use embedded, linked, and imported stylesheets)
-* Allow users to pass in their classes to bypass having to parse stylesheets to know which selectors to add classes to. We should also allow users to *force* stylesheets to be parsed, in case they may know some of the selectors but not all
+* Check the regular expressions - they're not my strong suit, so we may not be matching everything properly (among other issues, the "directChildMatch" generates an error right now)
 
 
 WARNING:
