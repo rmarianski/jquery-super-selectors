@@ -12,13 +12,6 @@
 (function($){
   $.fn.superSelectify = function(options) {
 
-  // Safari loads things in parallel, so we have to wait for everything to finish before proceeding
-  // otherwise it thinks there are no stylesheets
-   if (jQuery.browser.safari && document.readyState != "complete"){
-     setTimeout( arguments.callee, 100 );
-     return;
-   }
-
   var defaults = {
    emptyClass: "empty",
    firstClass: "first",
@@ -178,6 +171,14 @@
   
   // Only parse the stylesheets if no manual selectors are provided, or the user is forcing the behavior
   if(!options.manualSelectors || options.forceStylesheetParsing) {
+	
+	  // Safari loads things in parallel, so we have to wait for everything to finish before proceeding
+	  // otherwise it thinks there are no stylesheets
+	   if (jQuery.browser.safari && document.readyState != "complete"){
+	     setTimeout( arguments.callee, 100 );
+	     return;
+	   }
+	
     for(stylesheet=0;stylesheet<document.styleSheets.length;stylesheet++) {
       getCSS(document.styleSheets[stylesheet]);
     };
