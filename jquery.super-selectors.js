@@ -41,66 +41,33 @@
 
   
   function getMatches(CSS) {
-    
-    var emptyMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*:empty/gi);
-    if(emptyMatch) emptyMatch=emptyMatch.join(", ");
-
-    var firstMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*:first[^-]/gi);
-    if(firstMatch) firstMatch=firstMatch.join(", ");
-
-    var lastMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*:last[^-]/gi);
-    if(lastMatch) lastMatch=lastMatch.join(", ");
-
-    var oddMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*:nth-child(odd)/gi);
-    if(oddMatch) oddMatch=oddMatch.join(", ");
-
-    var evenMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*:nth-child(even)/gi);
-    if(evenMatch) evenMatch=evenMatch.join(", ");
-
-    var nextMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*?\+\s?[a-zA-Z0-9\.\-_\+\~#]*/gi);
-    if(nextMatch) nextMatch=nextMatch.join(", ");
-
-    var siblingMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*?\~\s?[a-zA-Z0-9\.\-_\+\~#]*/gi);
-    if(siblingMatch) siblingMatch=siblingMatch.join(", ");
-
-    var firstChildMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*:first-child/gi);
-    if(firstChildMatch) firstChildMatch=firstChildMatch.join(", ");
-
-    var lastChildMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*:last-child/gi);
-    if(lastChildMatch) lastChildMatch=lastChildMatch.join(", ");
-
-    var onlyChildMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*:only-child/gi);
-    if(onlyChildMatch) onlyChildMatch=onlyChildMatch.join(", ");
-
-    var directChildMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*\>\s?[a-zA-Z0-9\.\-_\+\~#:]*/gi);
-    if(directChildMatch) directChildMatch=directChildMatch.join(", ");
-
-    var textInputMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*input\[type="text"\]/gi);
-    if(textInputMatch) textInputMatch=textInputMatch.join(", ");
-
-    var passwordInputMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*input\[type="password"\]/gi);
-    if(passwordInputMatch) passwordInputMatch=passwordInputMatch.join(", ");
-
-    var radioInputMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*input\[type="radio"\]/gi);
-    if(radioInputMatch) radioInputMatch=radioInputMatch.join(", ");
-
-    var checkboxInputMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*input\[type="checkbox"\]/gi);
-    if(checkboxInputMatch) checkboxInputMatch=checkboxInputMatch.join(", ");
-
-    var submitInputMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*input\[type="submit"\]/gi);
-    if(submitInputMatch) submitInputMatch=submitInputMatch.join(", ");
-
-    var imageInputMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*input\[type="image"\]/gi);
-    if(imageInputMatch) imageInputMatch=imageInputMatch.join(", ");
-
-    var resetInputMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*input\[type="reset"\]/gi);
-    if(resetInputMatch) resetInputMatch=resetInputMatch.join(", ");
-
-    var buttonInputMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*button/gi);
-    if(buttonInputMatch) buttonInputMatch=buttonInputMatch.join(", ");
-
-    var fileInputMatch = CSS.match(/[a-zA-Z0-9\.\-_\+\~#:\s]*input\[type="file"\]/gi);
-    if(fileInputMatch) fileInputMatch=fileInputMatch.join(", ");
+	
+    function _match_item(reg, option) {
+		  var itemMatch = CSS.match(reg);
+		  if(itemMatch) itemMatch=itemMatch.join(", ");
+		  $(itemMatch).addClass(options[option])
+		}
+		
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*:empty/gi, 'emptyClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:first[^-]/gi, 'firstClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:last[^-]/gi, 'lastClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child(odd)/gi, 'oddClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child(even)/gi, 'evenClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*?\+\s?[a-zA-Z0-9._+~#:-]*/gi, 'nextClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*?\~\s?[a-zA-Z0-9._+~#:-]*/gi, 'siblingClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:first-child/gi, 'firstChildClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:last-child/gi, 'lastChildClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:only-child/gi, 'onlyChildClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*\>\s?[a-zA-Z0-9._+~#:-]*/gi, 'directChildClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="text"\]/gi, 'textInputClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="password"\]/gi, 'passwordInputClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="radio"\]/gi, 'radioInputClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="checkbox"\]/gi, 'checkboxInputClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="submit"\]/gi, 'submitInputClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="image"\]/gi, 'imageInputClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="reset"\]/gi, 'resetInputClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*button/gi, 'buttonInputClass');
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="file"\]/gi, 'fileInputClass');
 
     // Check for any imports within the passes CSS
     // Only IE should ever hit this (other browsers 
@@ -115,28 +82,6 @@
       }  
     }
 
-    // Add classes to all matched elements
-    $(emptyMatch).addClass(options.emptyClass); 
-    $(firstMatch).addClass(options.firstClass);
-    $(lastMatch).addClass(options.lastClass);
-    $(oddMatch).addClass(options.oddClass);
-    $(evenMatch).addClass(options.evenClass);
-    $(nextMatch).addClass(options.nextClass);
-    $(siblingMatch).addClass(options.siblingClass);
-    $(firstChildMatch).addClass(options.firstChildClass);
-    $(lastChildMatch).addClass(options.lastChildClass);
-    $(onlyChildMatch).addClass(options.onlyChildClass);
-    $(directChildMatch).addClass(options.directChildClass);
-    $(lastChildMatch).addClass(options.lastChildClass);
-    $(textInputMatch).addClass(options.textInputClass);
-    $(passwordInputMatch).addClass(options.passwordInputClass);
-    $(radioInputMatch).addClass(options.radioInputClass);
-    $(checkboxInputMatch).addClass(options.checkboxInputClass);
-    $(submitInputMatch).addClass(options.submitInputClass);
-    $(imageInputMatch).addClass(options.imageInputClass);
-    $(resetInputMatch).addClass(options.resetInputClass);
-    $(buttonInputMatch).addClass(options.buttonInputClass);
-    $(fileInputMatch).addClass(options.fileInputClass); 
   }
 
 	// Needed for non-IE browsers, as they don't support the cssText method for full stylesheets
@@ -178,7 +123,7 @@
 	     setTimeout( arguments.callee, 100 );
 	     return;
 	   }
-	
+
     for(stylesheet=0;stylesheet<document.styleSheets.length;stylesheet++) {
       getCSS(document.styleSheets[stylesheet]);
     };
