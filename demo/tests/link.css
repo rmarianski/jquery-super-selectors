@@ -1,0 +1,181 @@
+/* =========================================================================
+  Empty elements - Should match 'otherselectors element:empty'
+========================================================================= */
+#ex1 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex1 div.example p:empty {
+background: #eaeaea;
+color: #666;
+height: 1em; /* needed to ensure *something* renders */
+}
+
+#ex1 div.example p.empty {
+background: #c2c660;
+color: #5d5f2e;
+height: 1em; /* needed to ensure *something* renders */
+}
+
+/* =========================================================================
+  First elements - Should match 'otherselectors element:first'
+========================================================================= */
+#ex2 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex2 div.example p:first {
+background: #eaeaea;
+color: #666;
+}
+
+#ex2 div.example p.first {
+background: #c2c660;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Last elements - Should match 'otherselectors element:last'
+========================================================================= */
+#ex3 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex3 div.example p:last {
+background: #eaeaea;
+color: #666;
+}
+
+#ex3 div.example p.last {
+background: #c2c660;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Odd elements - Should match 'otherselectors element:nth-child(odd)'
+========================================================================= */
+#ex4 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex4 div.example :nth-child(odd) {
+background: #eaeaea;
+color: #666;
+}
+
+#ex4 div.example p.odd {
+background: #c2c660;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Even elements - Should match 'otherselectors element:nth-child(even)'
+========================================================================= */
+#ex5 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex5 div.example p:nth-child(even) {
+background: #eaeaea;
+color: #666;
+}
+
+#ex5 div.example p.even {
+background: #c2c660;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Next elements - Should match 'otherselectors + element'
+========================================================================= */
+#ex6 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex6 div.example + p {
+background: #eaeaea;
+color: #666;
+}
+
+#ex6 div.example p.next {
+background: #c2c660;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Sibling elements - Should match 'otherselectors ~ element'
+========================================================================= */
+#ex7 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex7 div.example p ~ p {
+background: #eaeaea;
+color: #666;
+}
+
+#ex7 div.example p.sibling {
+background: #c2c660;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  First Child elements - Should match 'otherselectors element:first-child'
+========================================================================= */
+
+/* =========================================================================
+  Last Child elements - Should match 'otherselectors element:last-child'
+========================================================================= */
+
+/* =========================================================================
+  Only Child elements - Should match 'otherselectors element:only-child'
+========================================================================= */
+
+/* =========================================================================
+  Direct Child elements - Should match 'otherselectors > element'
+========================================================================= */
+
+/* =========================================================================
+  Text input elements - Should match 'otherselectors input[type="text"]'
+========================================================================= */
+
+/* =========================================================================
+  Password input elements - Should match 'otherselectors input[type="password"]'
+========================================================================= */
+
+/* =========================================================================
+  Radio input elements - Should match 'otherselectors input[type="radio"]'
+========================================================================= */
+
+/* =========================================================================
+  Checkbox input elements - Should match 'otherselectors input[type="checkbox"]'
+========================================================================= */
+
+/* =========================================================================
+  Submit input elements - Should match 'otherselectors input[type="submit"]'
+========================================================================= */
+
+/* =========================================================================
+  Image input elements - Should match 'otherselectors input[type="image"]'
+========================================================================= */
+
+/* =========================================================================
+  Reset input elements - Should match 'otherselectors input[type="reset"]'
+========================================================================= */
+
+/* =========================================================================
+  Button input elements - Should match 'otherselectors input[type="button"]'
+========================================================================= */
+
+/* =========================================================================
+  File input elements - Should match 'otherselectors input[type="file"]'
+========================================================================= */
+
+
