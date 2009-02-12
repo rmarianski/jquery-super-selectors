@@ -34,7 +34,8 @@
    buttonInputClass: "button",
    fileInputClass: "file",
    manualSelectors: false,
-   forceStylesheetParsing: false
+   forceStylesheetParsing: false,
+	 additionalClassHash: {} /* To allow specification of regular expressions & classes to extend SuperSelectors */
   };
   
   var options = $.extend(defaults, options);
