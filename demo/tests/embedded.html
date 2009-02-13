@@ -16,29 +16,762 @@ font-family: Helvetica, Verdana, sans-serif;
 
 .section {
 background: #e6b277;
-padding: 1em;
+padding: 0 1em;
 margin: 1em;
 border: 1px solid #521302;
+}
+
+.example label {
+padding: 0 0.5em 0 0;
+}
+
+/* Begin test CSS */
+/* =========================================================================
+  Empty elements - Should match 'otherselectors element:empty'
+========================================================================= */
+#ex1 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex1 div.example p:empty {
+background: #eaeaea;
+color: #666;
+height: 1em; /* needed to ensure *something* renders */
+}
+
+#ex1 div.example p.empty {
+background: #c2f060;
+color: #5d5f2e;
+height: 1em; /* needed to ensure *something* renders */
+}
+
+/* =========================================================================
+  First elements - Should match 'otherselectors element:first'
+========================================================================= */
+#ex2 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex2 div.example p:first {
+background: #eaeaea;
+color: #666;
+}
+
+#ex2 div.example p.first {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Last elements - Should match 'otherselectors element:last'
+========================================================================= */
+#ex3 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex3 div.example p:last {
+background: #eaeaea;
+color: #666;
+}
+
+#ex3 div.example p.last {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Odd elements - Should match 'otherselectors element:nth-child(odd)'
+========================================================================= */
+#ex4 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex4 div.example :nth-child(odd) {
+background: #eaeaea;
+color: #666;
+}
+
+#ex4 div.example p.odd {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Even elements - Should match 'otherselectors element:nth-child(even)'
+========================================================================= */
+#ex5 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex5 div.example p:nth-child(even) {
+background: #eaeaea;
+color: #666;
+}
+
+#ex5 div.example p.even {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Next elements - Should match 'otherselectors + element'
+========================================================================= */
+#ex6 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex6 div.example + p {
+background: #eaeaea;
+color: #666;
+}
+
+#ex6 div.example p.next {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Sibling elements - Should match 'otherselectors ~ element'
+========================================================================= */
+#ex7 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex7 div.example p ~ p {
+background: #eaeaea;
+color: #666;
+}
+
+#ex7 div.example p.sibling {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  First Child elements - Should match 'otherselectors element:first-child'
+========================================================================= */
+#ex8 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex8 div.example p:first-child  {
+background: #eaeaea;
+color: #666;
+}
+
+#ex8 div.example p.first-child {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Last Child elements - Should match 'otherselectors element:last-child'
+========================================================================= */
+#ex9 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex9 div.example p:last-child  {
+background: #eaeaea;
+color: #666;
+}
+
+#ex9 div.example p.last-child {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Only Child elements - Should match 'otherselectors element:only-child'
+========================================================================= */
+#ex10 div.example p {
+background: #c92f05;
+color: #521302;
+}
+
+#ex10 div.example p:only-child  {
+background: #eaeaea;
+color: #666;
+}
+
+#ex10 div.example p.only-child {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Direct Child elements - Should match 'otherselectors > element'
+========================================================================= */
+#ex11 div.example ul {
+background: #c92f05;
+color: #521302;
+}
+
+#ex11 div.example > ul {
+background: #eaeaea;
+color: #666;
+}
+
+#ex11 div.example ul.child {
+background: #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Text input elements - Should match 'otherselectors input[type="text"]'
+========================================================================= */
+#ex12 div.example input {
+background: #c92f05;
+border: 1px solid #c92f05;
+color: #521302;
+}
+
+#ex12 div.example input[type="text"] {
+background: #eaeaea;
+border: 1px solid #eaeaea;
+color: #666;
+}
+
+#ex12 div.example input.text {
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Password input elements - Should match 'otherselectors input[type="password"]'
+========================================================================= */
+#ex13 div.example input {
+background: #c92f05;
+border: 1px solid #c92f05;
+color: #521302;
+}
+
+#ex13 div.example input[type="password"] {
+background: #eaeaea;
+border: 1px solid #eaeaea;
+color: #666;
+}
+
+#ex13 div.example input.password {
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+
+
+/* =========================================================================
+  Radio input elements - Should match 'otherselectors input[type="radio"]'
+========================================================================= */
+#ex14 div.example input {
+background: #c92f05;
+border: 1px solid #c92f05;
+color: #521302;
+}
+
+#ex14 div.example input[type="radio"] {
+background: #eaeaea;
+border: 1px solid #eaeaea;
+color: #666;
+}
+
+#ex14 div.example input.radio {
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+/* =========================================================================
+  Checkbox input elements - Should match 'otherselectors input[type="checkbox"]'
+========================================================================= */
+#ex15 div.example input {
+background: #c92f05;
+border: 1px solid #c92f05;
+color: #521302;
+}
+
+#ex15 div.example input[type="checkbox"] {
+background: #eaeaea;
+border: 1px solid #eaeaea;
+color: #666;
+}
+
+#ex15 div.example input.checkbox {
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  File input elements - Should match 'otherselectors input[type="file"]'
+========================================================================= */
+#ex16 div.example input {
+background: #c92f05;
+border: 1px solid #c92f05;
+color: #521302;
+}
+
+#ex16 div.example input[type="file"] {
+background: #eaeaea;
+border: 1px solid #eaeaea;
+color: #666;
+}
+
+#ex16 div.example input.file {
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Button input elements - Should match 'otherselectors input[type="button"]'
+========================================================================= */
+#ex17 div.example input {
+background: #c92f05;
+border: 1px solid #c92f05;
+color: #521302;
+}
+
+#ex17 div.example input[type="button"] {
+background: #eaeaea;
+border: 1px solid #eaeaea;
+color: #666;
+}
+
+#ex17 div.example input.button {
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Image input elements - Should match 'otherselectors input[type="image"]'
+========================================================================= */
+#ex18 div.example input {
+background: #c92f05;
+border: 1px solid #c92f05;
+color: #521302;
+}
+
+#ex18 div.example input[type="image"] {
+background: #eaeaea;
+border: 1px solid #eaeaea;
+color: #666;
+}
+
+#ex18 div.example input.image {
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Reset input elements - Should match 'otherselectors input[type="reset"]'
+========================================================================= */
+#ex19 div.example input {
+background: #c92f05;
+border: 1px solid #c92f05;
+color: #521302;
+}
+
+#ex19 div.example input[type="reset"] {
+background: #eaeaea;
+border: 1px solid #eaeaea;
+color: #666;
+}
+
+#ex19 div.example input.reset {
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Submit input elements - Should match 'otherselectors input[type="submit"]'
+========================================================================= */
+#ex20 div.example input {
+background: #c92f05;
+border: 1px solid #c92f05;
+color: #521302;
+}
+
+#ex20 div.example input[type="submit"] {
+background: #eaeaea;
+border: 1px solid #eaeaea;
+color: #666;
+}
+
+#ex20 div.example input.submit {
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Arbitrary pattern test - Should match 'otherselectors input[type="submit"]'
+========================================================================= */
+#ex21 div.example a {
+background: #c92f05;
+color: #521302;
+}
+
+#ex21 div.example a[href$=".jpg"] {
+background: #eaeaea;
+color: #666;
+}
+
+#ex21 div.example a.jpeg {
+background: #c2f060;
+color: #5d5f2e;
 }
     /*]]>*/
     </style>
 </head>
 <body>
-  <h1>jQuery Super Selectors plugin</h1>
-  <p>A jQuery plugin allowing unobtrusive 'info' text to be placed dynamically for form inputs (including password fields)</p>
-  <div class="section">
-    <h2>Example One</h2>
-    <span></span>
-    <br clear="all" />
-    <h3>Code</h3>
+  <h1>jQuery Super Selectors plugin test</h1>
+  <p>Testing against embedded CSS.</p>
+  <div id="ex1" class="section">
+    <h2>Empty Element</h2>
     <div class="example">
-      <code><span>Something awesome</span><br /><span>Something else</span></code>
+      <p title="If this has a green background, this test is passed."></p>
+    </div><!-- /.example -->  
+  </div><!-- /.section -->
+  <div id="ex2" class="section">
+    <h2>First Element</h2>
+    <div class="example">
+      <p>This is the first paragraph. If this has a green background, this test is passed. If it is grey, your browser supports the <code>:first</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+      <p>Another paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:first</code> selector.</p>
+      <p>Yet another paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:first</code> selector.</p>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex3" class="section">
+    <h2>Last Element</h2>
+    <div class="example">
+      <p>A paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:first</code> selector.</p>
+      <p>Another paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:first</code> selector.</p>
+      <p>This is the last paragraph. If this has a green background, this test is passed. If it is grey, your browser supports the <code>:first</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex4" class="section">
+    <h2>Odd Element</h2>
+    <div class="example">
+      <p>An odd-numbered paragraph. If this has a green background, this test is passed. If it is grey, your browser supports the <code>:nth-child(odd)</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+      <p>An even-numbered paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:nth-child(odd)</code> selector.</p>
+      <p>This is the last paragraph, which is also odd-numbered. If this has a green background, this test is passed. If it is grey, your browser supports the <code>:nth-child(odd)</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex5" class="section">
+    <h2>Even Element</h2>
+    <div class="example">
+      <p>An odd-numbered paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:nth-child(even)</code> selector.</p>
+      <p>An even-numbered paragraph.  If this has a green background, this test is passed. If it is grey, your browser supports the <code>:nth-child(even)</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+      <p>This is the last paragraph, which is also odd-numbered. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:nth-child(even)</code> selector.</p>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex6" class="section">
+    <h2>Next Element</h2>
+    <div class="example">
+      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
+      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
+      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex7" class="section">
+    <h2>Sibling Element</h2>
+    <div class="example">
+      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
+      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
+      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim.</p>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex8" class="section">
+    <h2>First Child</h2>
+    <div class="example">
+      <p>This is the first child of the <code>example</code> div. If this has a green background, this test is passed. If it is grey, your browser supports the <code>:first-child</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+      <p>Another paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:first-child</code> selector.</p>
+      <p>Yet another paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:first-child</code> selector.</p>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex9" class="section">
+    <h2>Last Child</h2>
+    <div class="example">
+      <p>A paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:last-child</code> selector.</p>
+      <p>Another paragraph. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:last-child</code> selector.</p>
+      <p>This is the last child of the <code>example</code> div. If this has a green background, this test is passed. If it is grey, your browser supports the <code>:last-child</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex10" class="section">
+    <h2>Only Child</h2>
+    <div class="example">
+      <p>This is the only paragraph within this <code>example</code> div. If this has a green background, this test is passed. If it is grey, your browser supports the <code>:only-child</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+    </div><!-- /.example -->
+    <div class="example">
+      <p>A paragraph. Because there are multiple paragraphs within this <code>example</code> div, this is a passing test if there is a red background. If the background is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:only-child</code> selector.</p>
+      <p>Another paragraph. Because there are multiple paragraphs within this <code>example</code> div, this is a passing test if there is a red background. If the background is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:only-child</code> selector.</p>
+      <p>Yet another paragraph. Because there are multiple paragraphs within this <code>example</code> div, this is a passing test if there is a red background. If the background is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>:only-child</code> selector.</p>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex11" class="section">
+    <h2>Direct Child</h2>
+    <div class="example">
+      <ul>
+        <li>This is a list item within an unordered list which is a direct descendant of the <code>example</code> div. If this has a green background, this test is passed. If it is grey, your browser supports the <code> > </code> selector, but SuperSelectors has failed to add the class correctly.</li>        
+        <li>This is another list item within an unordered list which is a direct descendant of the <code>example</code> div. If this has a green background, this test is passed. If it is grey, your browser supports the <code> > </code> selector, but SuperSelectors has failed to add the class correctly.
+          <ul>
+            <li>This list item's within an unordered list which is <strong>not</strong> a direct descendant of the <code>example</code> div. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code> > </code> selector.</li>
+          </ul>
+        </li>
+        <li>This is a list item within an unordered list which is a direct descendant of the <code>example</code> div. If this has a green background, this test is passed. If it is grey, your browser supports the <code> > </code> selector, but SuperSelectors has failed to add the class correctly.</li>
+      </ul>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex12" class="section">
+    <h2>Example Twelve</h2>
+    <p>Text inputs</h2>
+    <div class="example">
+      <form id="ex12-form" action="#" method="post" enctype="multipart/form-data">
+        <label for="ex12-text">Text Input</label><input id="ex12-text" type="text" /><br />
+        <label for="ex12-password">Password Input</label><input id="ex12-password" type="password" /><br />
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label><input type="radio" name="ex12-radio" value="AM" />AM</label>
+          <label><input type="radio" name="ex12-radio" value="FM" />FM</label>
+          <label><input type="radio" name="ex12-radio" value="Arecibo" />Arecibo</label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label><input type="checkbox" name="ex12-check1" value="Empty" />Empty</label>
+          <label><input type="checkbox" name="ex12-check2" value="Full" />Full</label>
+        </fieldset>
+        <label for="ex12-file">File Input</label><input id="ex12-file" type="file" /><br />
+        <input type="image" align="left" name="ex12-image" src="submitbutton.gif" /><br />
+        <input type="button" align="left" name="ex12-button" value="A Button" /><br />
+        <input type="reset" name="submitbutton" value="cancel" />
+        <input type="submit" name="submitbutton" value="submit" />
+      </form>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex13" class="section">
+    <h2>Password inputs</h2>
+    <div class="example">
+      <form id="ex13-form" action="#" method="post" enctype="multipart/form-data">
+        <label for="ex13-text">Text Input</label><input id="ex13-text" type="text" /><br />
+        <label for="ex13-password">Password Input</label><input id="ex13-password" type="password" /><br />
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label><input type="radio" name="ex13-radio" value="AM" />AM</label>
+          <label><input type="radio" name="ex13-radio" value="FM" />FM</label>
+          <label><input type="radio" name="ex13-radio" value="Arecibo" />Arecibo</label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label><input type="checkbox" name="ex13-check1" value="Empty" />Empty</label>
+          <label><input type="checkbox" name="ex13-check2" value="Full" />Full</label>
+        </fieldset>
+        <label for="ex13-file">File Input</label><input id="ex13-file" type="file" /><br />
+        <input type="image" align="left" name="ex13-image" src="submitbutton.gif" /><br />
+        <input type="button" align="left" name="ex13-button" value="A Button" /><br />
+        <input type="reset" name="submitbutton" value="cancel" />
+        <input type="submit" name="submitbutton" value="submit" />
+      </form>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex14" class="section">
+    <h2>Radio inputs</h2>
+    <div class="example">
+      <form id="ex14-form" action="#" method="post" enctype="multipart/form-data">
+        <label for="ex14-text">Text Input</label><input id="ex14-text" type="text" /><br />
+        <label for="ex14-password">Password Input</label><input id="ex14-password" type="password" /><br />
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label><input type="radio" name="ex14-radio" value="AM" />AM</label>
+          <label><input type="radio" name="ex14-radio" value="FM" />FM</label>
+          <label><input type="radio" name="ex14-radio" value="Arecibo" />Arecibo</label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label><input type="checkbox" name="ex14-check1" value="Empty" />Empty</label>
+          <label><input type="checkbox" name="ex14-check2" value="Full" />Full</label>
+        </fieldset>
+        <label for="ex14-file">File Input</label><input id="ex14-file" type="file" /><br />
+        <input type="image" align="left" name="ex14-image" src="submitbutton.gif" /><br />
+        <input type="button" align="left" name="ex14-button" value="A Button" /><br />
+        <input type="reset" name="submitbutton" value="cancel" />
+        <input type="submit" name="submitbutton" value="submit" />
+      </form>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex15" class="section">
+    <h2>Check boxes</h2>
+    <div class="example">
+      <form id="ex15-form" action="#" method="post" enctype="multipart/form-data">
+        <label for="ex15-text">Text Input</label><input id="ex15-text" type="text" /><br />
+        <label for="ex15-password">Password Input</label><input id="ex15-password" type="password" /><br />
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label><input type="radio" name="ex15-radio" value="AM" />AM</label>
+          <label><input type="radio" name="ex15-radio" value="FM" />FM</label>
+          <label><input type="radio" name="ex15-radio" value="Arecibo" />Arecibo</label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label><input type="checkbox" name="ex15-check1" value="Empty" />Empty</label>
+          <label><input type="checkbox" name="ex15-check2" value="Full" />Full</label>
+        </fieldset>
+        <label for="ex15-file">File Input</label><input id="ex15-file" type="file" /><br />
+        <input type="image" align="left" name="ex15-image" src="submitbutton.gif" /><br />
+        <input type="button" align="left" name="ex15-button" value="A Button" /><br />
+        <input type="reset" name="submitbutton" value="cancel" />
+        <input type="submit" name="submitbutton" value="submit" />
+      </form>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex16" class="section">
+    <h2>File inputs</h2>
+    <div class="example">
+      <form id="ex16-form" action="#" method="post" enctype="multipart/form-data">
+        <label for="ex16-text">Text Input</label><input id="ex16-text" type="text" /><br />
+        <label for="ex16-password">Password Input</label><input id="ex16-password" type="password" /><br />
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label><input type="radio" name="ex16-radio" value="AM" />AM</label>
+          <label><input type="radio" name="ex16-radio" value="FM" />FM</label>
+          <label><input type="radio" name="ex16-radio" value="Arecibo" />Arecibo</label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label><input type="checkbox" name="ex16-check1" value="Empty" />Empty</label>
+          <label><input type="checkbox" name="ex16-check2" value="Full" />Full</label>
+        </fieldset>
+        <label for="ex16-file">File Input</label><input id="ex16-file" type="file" /><br />
+        <input type="image" align="left" name="ex16-image" src="submitbutton.gif" /><br />
+        <input type="button" align="left" name="ex16-button" value="A Button" /><br />
+        <input type="reset" name="submitbutton" value="cancel" />
+        <input type="submit" name="submitbutton" value="submit" />
+      </form>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex17" class="section">
+    <h2>Button inputs</h2>
+    <div class="example">
+      <form id="ex17-form" action="#" method="post" enctype="multipart/form-data">
+        <label for="ex17-text">Text Input</label><input id="ex17-text" type="text" /><br />
+        <label for="ex17-password">Password Input</label><input id="ex17-password" type="password" /><br />
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label><input type="radio" name="ex17-radio" value="AM" />AM</label>
+          <label><input type="radio" name="ex17-radio" value="FM" />FM</label>
+          <label><input type="radio" name="ex17-radio" value="Arecibo" />Arecibo</label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label><input type="checkbox" name="ex17-check1" value="Empty" />Empty</label>
+          <label><input type="checkbox" name="ex17-check2" value="Full" />Full</label>
+        </fieldset>
+        <label for="ex17-file">File Input</label><input id="ex17-file" type="file" /><br />
+        <input type="image" align="left" name="ex17-image" src="submitbutton.gif" /><br />
+        <input type="button" align="left" name="ex17-button" value="A Button" /><br />
+        <input type="reset" name="submitbutton" value="cancel" />
+        <input type="submit" name="submitbutton" value="submit" />
+      </form>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex18" class="section">
+    <h2>Image inputs</h2>
+    <div class="example">
+      <form id="ex18-form" action="#" method="post" enctype="multipart/form-data">
+        <label for="ex18-text">Text Input</label><input id="ex18-text" type="text" /><br />
+        <label for="ex18-password">Password Input</label><input id="ex18-password" type="password" /><br />
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label><input type="radio" name="ex18-radio" value="AM" />AM</label>
+          <label><input type="radio" name="ex18-radio" value="FM" />FM</label>
+          <label><input type="radio" name="ex18-radio" value="Arecibo" />Arecibo</label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label><input type="checkbox" name="ex18-check1" value="Empty" />Empty</label>
+          <label><input type="checkbox" name="ex18-check2" value="Full" />Full</label>
+        </fieldset>
+        <label for="ex18-file">File Input</label><input id="ex18-file" type="file" /><br />
+        <input type="image" align="left" name="ex18-image" src="submitbutton.gif" /><br />
+        <input type="button" align="left" name="ex18-button" value="A Button" /><br />
+        <input type="reset" name="submitbutton" value="cancel" />
+        <input type="submit" name="submitbutton" value="submit" />
+      </form>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex19" class="section">
+    <h2>Reset inputs</h2>
+    <div class="example">
+      <form id="ex19-form" action="#" method="post" enctype="multipart/form-data">
+        <label for="ex19-text">Text Input</label><input id="ex19-text" type="text" /><br />
+        <label for="ex19-password">Password Input</label><input id="ex19-password" type="password" /><br />
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label><input type="radio" name="ex19-radio" value="AM" />AM</label>
+          <label><input type="radio" name="ex19-radio" value="FM" />FM</label>
+          <label><input type="radio" name="ex19-radio" value="Arecibo" />Arecibo</label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label><input type="checkbox" name="ex19-check1" value="Empty" />Empty</label>
+          <label><input type="checkbox" name="ex19-check2" value="Full" />Full</label>
+        </fieldset>
+        <label for="ex19-file">File Input</label><input id="ex19-file" type="file" /><br />
+        <input type="image" align="left" name="ex19-image" src="submitbutton.gif" /><br />
+        <input type="button" align="left" name="ex19-button" value="A Button" /><br />
+        <input type="reset" name="submitbutton" value="cancel" />
+        <input type="submit" name="submitbutton" value="submit" />
+      </form>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex20" class="section">
+    <h2>Submit inputs</h2>
+    <div class="example">
+      <form id="ex20-form" action="#" method="post" enctype="multipart/form-data">
+        <label for="ex20-text">Text Input</label><input id="ex20-text" type="text" /><br />
+        <label for="ex20-password">Password Input</label><input id="ex20-password" type="password" /><br />
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label><input type="radio" name="ex20-radio" value="AM" />AM</label>
+          <label><input type="radio" name="ex20-radio" value="FM" />FM</label>
+          <label><input type="radio" name="ex20-radio" value="Arecibo" />Arecibo</label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label><input type="checkbox" name="ex20-check1" value="Empty" />Empty</label>
+          <label><input type="checkbox" name="ex20-check2" value="Full" />Full</label>
+        </fieldset>
+        <label for="ex20-file">File Input</label><input id="ex20-file" type="file" /><br />
+        <input type="image" align="left" name="ex20-image" src="submitbutton.gif" /><br />
+        <input type="button" align="left" name="ex20-button" value="A Button" /><br />
+        <input type="reset" name="submitbutton" value="cancel" />
+        <input type="submit" name="submitbutton" value="submit" />
+      </form>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
+  <div id="ex21" class="section">
+    <h2>Arbitrary patterns</h2>
+    <div class="example">
+      <ul>
+        <li><a href="pass.jpg">This link points to a .jpg file, matching the pattern passed in via <code>additionalElementHash</code>. If this has a green background, this test is passed. If it is grey, your browser supports the CSS attribute selector we're using, but SuperSelectors has failed to add the class correctly.</a></li>
+        <li><a href="fail.pdf">A link to a .pdf file. This is a passing test if there is a red background. If the background is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for CSS attribute selectors.</a></li>
+        <li><a href="fail.png">A link to a .png file. This is a passing test if there is a red background. If the background is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for CSS attribute selectors.</a></li>
+      </ul>
     </div><!-- /.example -->
   </div><!-- /.section -->
   <script type="text/javascript">
 //<![CDATA[
-    $(document).superSelectify();
-    //$(document).superSelectify({manualSelectors: 'code, .section example, div.example > :first-child, pre, code span'});
+    $(document).superSelectify({additionalElementHash: {jpeg: /[a-zA-Z0-9._+~#:\s-]*a\[href\$=".jpg"\]/gi}});
 //]]>
   </script>
 </body>

@@ -2,7 +2,6 @@ Super Selectors is a jQuery plugin enabling better CSS selector support for olde
 
 TODO:
 * Finish demo page
-* Create test pages (should use embedded, linked, and imported stylesheets)
 * Check the regular expressions - they're not my strong suit, so we may not be matching everything properly
 
 

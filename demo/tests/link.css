@@ -13,7 +13,7 @@ height: 1em; /* needed to ensure *something* renders */
 }
 
 #ex1 div.example p.empty {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 height: 1em; /* needed to ensure *something* renders */
 }
@@ -32,7 +32,7 @@ color: #666;
 }
 
 #ex2 div.example p.first {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -50,7 +50,7 @@ color: #666;
 }
 
 #ex3 div.example p.last {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -68,7 +68,7 @@ color: #666;
 }
 
 #ex4 div.example p.odd {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -86,7 +86,7 @@ color: #666;
 }
 
 #ex5 div.example p.even {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -104,7 +104,7 @@ color: #666;
 }
 
 #ex6 div.example p.next {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -122,7 +122,7 @@ color: #666;
 }
 
 #ex7 div.example p.sibling {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -140,7 +140,7 @@ color: #666;
 }
 
 #ex8 div.example p.first-child {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -158,7 +158,7 @@ color: #666;
 }
 
 #ex9 div.example p.last-child {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -176,7 +176,7 @@ color: #666;
 }
 
 #ex10 div.example p.only-child {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -194,7 +194,7 @@ color: #666;
 }
 
 #ex11 div.example ul.child {
-background: #c2c660;
+background: #c2f060;
 color: #5d5f2e;
 }
 
@@ -214,8 +214,8 @@ color: #666;
 }
 
 #ex12 div.example input.text {
-background: #c2c660;
-border: 1px solid #c2c660;
+background: #c2f060;
+border: 1px solid #c2f060;
 color: #5d5f2e;
 }
 
@@ -235,8 +235,8 @@ color: #666;
 }
 
 #ex13 div.example input.password {
-background: #c2c660;
-border: 1px solid #c2c660;
+background: #c2f060;
+border: 1px solid #c2f060;
 color: #5d5f2e;
 }
 
@@ -257,8 +257,8 @@ color: #666;
 }
 
 #ex14 div.example input.radio {
-background: #c2c660;
-border: 1px solid #c2c660;
+background: #c2f060;
+border: 1px solid #c2f060;
 color: #5d5f2e;
 }
 /* =========================================================================
@@ -277,8 +277,8 @@ color: #666;
 }
 
 #ex15 div.example input.checkbox {
-background: #c2c660;
-border: 1px solid #c2c660;
+background: #c2f060;
+border: 1px solid #c2f060;
 color: #5d5f2e;
 }
 
@@ -298,8 +298,8 @@ color: #666;
 }
 
 #ex16 div.example input.file {
-background: #c2c660;
-border: 1px solid #c2c660;
+background: #c2f060;
+border: 1px solid #c2f060;
 color: #5d5f2e;
 }
 
@@ -319,8 +319,8 @@ color: #666;
 }
 
 #ex17 div.example input.button {
-background: #c2c660;
-border: 1px solid #c2c660;
+background: #c2f060;
+border: 1px solid #c2f060;
 color: #5d5f2e;
 }
 
@@ -340,8 +340,8 @@ color: #666;
 }
 
 #ex18 div.example input.image {
-background: #c2c660;
-border: 1px solid #c2c660;
+background: #c2f060;
+border: 1px solid #c2f060;
 color: #5d5f2e;
 }
 
@@ -361,8 +361,8 @@ color: #666;
 }
 
 #ex19 div.example input.reset {
-background: #c2c660;
-border: 1px solid #c2c660;
+background: #c2f060;
+border: 1px solid #c2f060;
 color: #5d5f2e;
 }
 
@@ -382,7 +382,25 @@ color: #666;
 }
 
 #ex20 div.example input.submit {
-background: #c2c660;
-border: 1px solid #c2c660;
+background: #c2f060;
+border: 1px solid #c2f060;
+color: #5d5f2e;
+}
+
+/* =========================================================================
+  Arbitrary pattern test - Should match 'otherselectors input[type="submit"]'
+========================================================================= */
+#ex21 div.example a {
+background: #c92f05;
+color: #521302;
+}
+
+#ex21 div.example a[href$=".jpg"] {
+background: #eaeaea;
+color: #666;
+}
+
+#ex21 div.example a.jpeg {
+background: #c2f060;
 color: #5d5f2e;
 }

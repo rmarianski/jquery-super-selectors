@@ -17,7 +17,7 @@ font-family: Helvetica, Verdana, sans-serif;
 
 .section {
 background: #e6b277;
-padding: 1em;
+padding: 0 1em;
 margin: 1em;
 border: 1px solid #521302;
 }
@@ -29,8 +29,8 @@ padding: 0 0.5em 0 0;
     </style>
 </head>
 <body>
-  <h1>jQuery Super Selectors plugin</h1>
-  <p>A jQuery plugin allowing unobtrusive 'info' text to be placed dynamically for form inputs (including password fields)</p>
+  <h1>jQuery Super Selectors plugin test</h1>
+  <p>Testing against an imported stylesheet.</p>
   <div id="ex1" class="section">
     <h2>Empty Element</h2>
     <div class="example">
@@ -352,10 +352,19 @@ padding: 0 0.5em 0 0;
       </form>
     </div><!-- /.example -->
   </div><!-- /.section -->
+  <div id="ex21" class="section">
+    <h2>Arbitrary patterns</h2>
+    <div class="example">
+      <ul>
+        <li><a href="pass.jpg">This link points to a .jpg file, matching the pattern passed in via <code>additionalElementHash</code>. If this has a green background, this test is passed. If it is grey, your browser supports the CSS attribute selector we're using, but SuperSelectors has failed to add the class correctly.</a></li>
+        <li><a href="fail.pdf">A link to a .pdf file. This is a passing test if there is a red background. If the background is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for CSS attribute selectors.</a></li>
+        <li><a href="fail.png">A link to a .png file. This is a passing test if there is a red background. If the background is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for CSS attribute selectors.</a></li>
+      </ul>
+    </div><!-- /.example -->
+  </div><!-- /.section -->
   <script type="text/javascript">
 //<![CDATA[
-    $(document).superSelectify();
-    //$(document).superSelectify({manualSelectors: 'code, .section example, div.example > :first-child, pre, code span'});
+    $(document).superSelectify({additionalElementHash: {jpeg: /[a-zA-Z0-9._+~#:\s-]*a\[href\$=".jpg"\]/gi}});
 //]]>
   </script>
 </body>

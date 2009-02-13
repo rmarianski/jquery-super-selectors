@@ -3,7 +3,7 @@
  * A jQuery plugin enabling better CSS selector support for older browsers
  *  by leveraging jQuery's excellent selectors
  * 
- * Version 0.8
+ * Version 0.9
  * Author: Chris Patterson
  *
  * License: GPL 3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -35,7 +35,7 @@
    fileInputClass: "file",
    manualSelectors: false,
    forceStylesheetParsing: false,
-	 additionalClassHash: {} /* To allow specification of regular expressions & classes to extend SuperSelectors */
+	 additionalElementHash: {} /* To allow specification of regular expressions & classes to extend SuperSelectors */
   };
   
   var options = $.extend(defaults, options);
@@ -43,32 +43,38 @@
   
   function getMatches(CSS) {
 	
-    function _match_item(reg, option) {
+    function _match_item(reg, className) {
 		  var itemMatch = CSS.match(reg);
 		  if(itemMatch) itemMatch=itemMatch.join(", ");
-		  $(itemMatch).addClass(options[option])
+		  $(itemMatch).addClass(className)
 		}
 		
-    _match_item(/[a-zA-Z0-9._+~#:\s-]*:empty/gi, 'emptyClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:first[^-]/gi, 'firstClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:last[^-]/gi, 'lastClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child(odd)/gi, 'oddClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child(even)/gi, 'evenClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*?\+\s?[a-zA-Z0-9._+~#:-]*/gi, 'nextClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*?\~\s?[a-zA-Z0-9._+~#:-]*/gi, 'siblingClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:first-child/gi, 'firstChildClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:last-child/gi, 'lastChildClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:only-child/gi, 'onlyChildClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*\>\s?[a-zA-Z0-9._+~#:-]*/gi, 'directChildClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="text"\]/gi, 'textInputClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="password"\]/gi, 'passwordInputClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="radio"\]/gi, 'radioInputClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="checkbox"\]/gi, 'checkboxInputClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="submit"\]/gi, 'submitInputClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="image"\]/gi, 'imageInputClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="reset"\]/gi, 'resetInputClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*button/gi, 'buttonInputClass');
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="file"\]/gi, 'fileInputClass');
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*:empty/gi, options.emptyClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:first[^-]/gi, options.firstClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:last[^-]/gi, options.lastClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child(odd)/gi, options.oddClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child(even)/gi, options.evenClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*?\+\s?[a-zA-Z0-9._+~#:-]*/gi, options.nextClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*?\~\s?[a-zA-Z0-9._+~#:-]*/gi, options.siblingClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:first-child/gi, options.firstChildClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:last-child/gi, options.lastChildClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*:only-child/gi, options.onlyChildClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*\>\s?[a-zA-Z0-9._+~#:-]*/gi, options.directChildClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="text"\]/gi, options.textInputClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="password"\]/gi, options.passwordInputClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="radio"\]/gi, options.radioInputClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="checkbox"\]/gi, options.checkboxInputClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="submit"\]/gi, options.submitInputClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="image"\]/gi, options.imageInputClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="reset"\]/gi, options.resetInputClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*button/gi, options.buttonInputClass);
+		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="file"\]/gi, options.fileInputClass);
+		
+		
+		for (var className in options.additionalElementHash) {
+		  _match_item(options.additionalElementHash[className], className);
+		}
+
 
     // Check for any imports within the passes CSS
     // Only IE should ever hit this (other browsers 
