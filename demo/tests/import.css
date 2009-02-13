@@ -98,7 +98,7 @@ background: #c92f05;
 color: #521302;
 }
 
-#ex6 div.example + p {
+#ex6 div.example p + p {
 background: #eaeaea;
 color: #666;
 }
@@ -207,13 +207,13 @@ border: 1px solid #c92f05;
 color: #521302;
 }
 
-#ex12 div.example input[type="text"] {
+#ex12 div.example input[type="button"] {
 background: #eaeaea;
 border: 1px solid #eaeaea;
 color: #666;
 }
 
-#ex12 div.example input.text {
+#ex12 div.example input.button {
 background: #c2f060;
 border: 1px solid #c2f060;
 color: #5d5f2e;

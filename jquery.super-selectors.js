@@ -35,45 +35,45 @@
    fileInputClass: "file",
    manualSelectors: false,
    forceStylesheetParsing: false,
-	 additionalElementHash: {} /* To allow specification of regular expressions & classes to extend SuperSelectors */
+   additionalElementHash: {} /* To allow specification of regular expressions & classes to extend SuperSelectors */
   };
   
   var options = $.extend(defaults, options);
 
   
   function getMatches(CSS) {
-	
+  
     function _match_item(reg, className) {
-		  var itemMatch = CSS.match(reg);
-		  if(itemMatch) itemMatch=itemMatch.join(", ");
-		  $(itemMatch).addClass(className)
-		}
-		
+      var itemMatch = CSS.match(reg);
+      if(itemMatch) itemMatch=itemMatch.join(", ");
+      $(itemMatch).addClass(className);
+    }
+    
     _match_item(/[a-zA-Z0-9._+~#:\s-]*:empty/gi, options.emptyClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:first[^-]/gi, options.firstClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:last[^-]/gi, options.lastClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child(odd)/gi, options.oddClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child(even)/gi, options.evenClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*?\+\s?[a-zA-Z0-9._+~#:-]*/gi, options.nextClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*?\~\s?[a-zA-Z0-9._+~#:-]*/gi, options.siblingClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:first-child/gi, options.firstChildClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:last-child/gi, options.lastChildClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*:only-child/gi, options.onlyChildClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*\>\s?[a-zA-Z0-9._+~#:-]*/gi, options.directChildClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="text"\]/gi, options.textInputClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="password"\]/gi, options.passwordInputClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="radio"\]/gi, options.radioInputClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="checkbox"\]/gi, options.checkboxInputClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="submit"\]/gi, options.submitInputClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="image"\]/gi, options.imageInputClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="reset"\]/gi, options.resetInputClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*button/gi, options.buttonInputClass);
-		_match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="file"\]/gi, options.fileInputClass);
-		
-		
-		for (var className in options.additionalElementHash) {
-		  _match_item(options.additionalElementHash[className], className);
-		}
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*:first[^-]/gi, options.firstClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*:last[^-]/gi, options.lastClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child\(odd\)/gi, options.oddClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*:nth-child\(even\)/gi, options.evenClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*?\+\s?[a-zA-Z0-9._+~#:-]*/gi, options.nextClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*?\~\s?[a-zA-Z0-9._+~#:-]*/gi, options.siblingClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*:first-child/gi, options.firstChildClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*:last-child/gi, options.lastChildClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*:only-child/gi, options.onlyChildClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*\>\s?[a-zA-Z0-9._+~#:-]*/gi, options.directChildClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="text"\]/gi, options.textInputClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="password"\]/gi, options.passwordInputClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="radio"\]/gi, options.radioInputClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="checkbox"\]/gi, options.checkboxInputClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="submit"\]/gi, options.submitInputClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="image"\]/gi, options.imageInputClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="reset"\]/gi, options.resetInputClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="button"\]/gi, options.buttonInputClass);
+    _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="file"\]/gi, options.fileInputClass);
+    
+    
+    for (var className in options.additionalElementHash) {
+      _match_item(options.additionalElementHash[className], className);
+    }
 
 
     // Check for any imports within the passes CSS
@@ -91,7 +91,7 @@
 
   }
 
-	// Needed for non-IE browsers, as they don't support the cssText method for full stylesheets
+  // Needed for non-IE browsers, as they don't support the cssText method for full stylesheets
   function ruleIterator(sheet) {
     var css = sheet.cssRules;
     for(var rule=0;rule<css.length;rule++) {
@@ -101,7 +101,7 @@
     }
   }
 
-	// Retrieve the CSS if it's a link or import, otherwise process the embedded CSS
+  // Retrieve the CSS if it's a link or import, otherwise process the embedded CSS
   function getCSS(sheet) {
     if(sheet.href) {
       var RELATIVE = /^[\w\.]+[^:]*$/;
@@ -123,13 +123,13 @@
   
   // Only parse the stylesheets if no manual selectors are provided, or the user is forcing the behavior
   if(!options.manualSelectors || options.forceStylesheetParsing) {
-	
-	  // Safari loads things in parallel, so we have to wait for everything to finish before proceeding
-	  // otherwise it thinks there are no stylesheets
-	   if (jQuery.browser.safari && document.readyState != "complete"){
-	     setTimeout( arguments.callee, 100 );
-	     return;
-	   }
+  
+    // Safari loads things in parallel, so we have to wait for everything to finish before proceeding
+    // otherwise it thinks there are no stylesheets
+     if (jQuery.browser.safari && document.readyState != "complete"){
+       setTimeout( arguments.callee, 100 );
+       return;
+     }
 
     for(stylesheet=0;stylesheet<document.styleSheets.length;stylesheet++) {
       getCSS(document.styleSheets[stylesheet]);
