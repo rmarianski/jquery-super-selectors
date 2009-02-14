@@ -16,7 +16,7 @@ font-family: Helvetica, Verdana, sans-serif;
 }
 
 .section {
-background: #e6b277;
+background: #f0eeee;
 padding: 0 1em;
 margin: 1em;
 border: 1px solid #521302;
@@ -72,17 +72,19 @@ padding: 0 0.5em 0 0;
   <div id="ex6" class="section">
     <h2>Next Element</h2>
     <div class="example">
-      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
-      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
-      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
+      <p>A paragraph. Because it's not immediately preceded by a paragraph, if this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>+</code> selector.</p>
+      <p>Another paragraph, which is immediately preceded by a paragraph. If this has a green background, this test is passed. If it is grey, your browser supports the <code>+</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+      <hr />
+      <p>This paragraph is immediately after an <code>&gt;hr /&lt;</code> element. If this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>+</code> selector.</p>
     </div><!-- /.example -->
   </div><!-- /.section -->
   <div id="ex7" class="section">
     <h2>Sibling Element</h2>
     <div class="example">
-      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
-      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim. </p>
-      <p>Integer neque leo, laoreet tincidunt, aliquet eu, ullamcorper eu, lorem. Sed id lorem. Sed a lectus. Donec eros. In volutpat nulla non pede. Nullam ullamcorper, justo id pulvinar porta, dolor felis aliquam eros, vel lacinia est lectus aliquam dolor. Maecenas ultricies elementum nisi. In rutrum, nisl sit amet varius facilisis, magna ipsum consectetur nulla, congue rhoncus felis velit viverra lectus. Aliquam id arcu. Maecenas adipiscing enim.</p>
+      <p>A paragraph. Because it's not preceded by a sibling paragraph, if this has a red background, this test is passed. If it is green, SuperSelectors has added the class to the wrong element. If it is grey, your browser has a bug in its support for the <code>~</code> selector.</p>
+      <p>Another paragraph, which is preceded by a sibling paragraph. If this has a green background, this test is passed. If it is grey, your browser supports the <code>~</code> selector, but SuperSelectors has failed to add the class correctly.</p>
+      <hr />
+      <p>Even though this paragraph follows an <code>&gt;hr /&lt;</code> element, it's still a sibling of the first paragraph . If this has a green background, this test is passed. If it is grey, your browser supports the <code>~</code> selector, but SuperSelectors has failed to add the class correctly.</p>
     </div><!-- /.example -->
   </div><!-- /.section -->
   <div id="ex8" class="section">
@@ -144,7 +146,7 @@ padding: 0 0.5em 0 0;
           <label><input type="checkbox" name="ex12-check2" value="Full" />Full</label>
         </fieldset>
         <label for="ex12-file">File Input</label><input id="ex12-file" type="file" /><br />
-        <input type="image" align="left" name="ex12-image" src="submitbutton.gif" /><br />
+        <input type="image" align="left" name="ex12-image" src="image-button.png" /><br />
         <input type="button" align="left" name="ex12-button" value="A Button" /><br />
         <input type="reset" name="submitbutton" value="cancel" />
         <input type="submit" name="submitbutton" value="submit" />
@@ -169,7 +171,7 @@ padding: 0 0.5em 0 0;
           <label><input type="checkbox" name="ex13-check2" value="Full" />Full</label>
         </fieldset>
         <label for="ex13-file">File Input</label><input id="ex13-file" type="file" /><br />
-        <input type="image" align="left" name="ex13-image" src="submitbutton.gif" /><br />
+        <input type="image" align="left" name="ex13-image" src="image-button.png" /><br />
         <input type="button" align="left" name="ex13-button" value="A Button" /><br />
         <input type="reset" name="submitbutton" value="cancel" />
         <input type="submit" name="submitbutton" value="submit" />
@@ -194,7 +196,7 @@ padding: 0 0.5em 0 0;
           <label><input type="checkbox" name="ex14-check2" value="Full" />Full</label>
         </fieldset>
         <label for="ex14-file">File Input</label><input id="ex14-file" type="file" /><br />
-        <input type="image" align="left" name="ex14-image" src="submitbutton.gif" /><br />
+        <input type="image" align="left" name="ex14-image" src="image-button.png" /><br />
         <input type="button" align="left" name="ex14-button" value="A Button" /><br />
         <input type="reset" name="submitbutton" value="cancel" />
         <input type="submit" name="submitbutton" value="submit" />
@@ -219,7 +221,7 @@ padding: 0 0.5em 0 0;
           <label><input type="checkbox" name="ex15-check2" value="Full" />Full</label>
         </fieldset>
         <label for="ex15-file">File Input</label><input id="ex15-file" type="file" /><br />
-        <input type="image" align="left" name="ex15-image" src="submitbutton.gif" /><br />
+        <input type="image" align="left" name="ex15-image" src="image-button.png" /><br />
         <input type="button" align="left" name="ex15-button" value="A Button" /><br />
         <input type="reset" name="submitbutton" value="cancel" />
         <input type="submit" name="submitbutton" value="submit" />
@@ -244,7 +246,7 @@ padding: 0 0.5em 0 0;
           <label><input type="checkbox" name="ex16-check2" value="Full" />Full</label>
         </fieldset>
         <label for="ex16-file">File Input</label><input id="ex16-file" type="file" /><br />
-        <input type="image" align="left" name="ex16-image" src="submitbutton.gif" /><br />
+        <input type="image" align="left" name="ex16-image" src="image-button.png" /><br />
         <input type="button" align="left" name="ex16-button" value="A Button" /><br />
         <input type="reset" name="submitbutton" value="cancel" />
         <input type="submit" name="submitbutton" value="submit" />
@@ -269,7 +271,7 @@ padding: 0 0.5em 0 0;
           <label><input type="checkbox" name="ex17-check2" value="Full" />Full</label>
         </fieldset>
         <label for="ex17-file">File Input</label><input id="ex17-file" type="file" /><br />
-        <input type="image" align="left" name="ex17-image" src="submitbutton.gif" /><br />
+        <input type="image" align="left" name="ex17-image" src="image-button.png" /><br />
         <input type="button" align="left" name="ex17-button" value="A Button" /><br />
         <input type="reset" name="submitbutton" value="cancel" />
         <input type="submit" name="submitbutton" value="submit" />
@@ -294,7 +296,7 @@ padding: 0 0.5em 0 0;
           <label><input type="checkbox" name="ex18-check2" value="Full" />Full</label>
         </fieldset>
         <label for="ex18-file">File Input</label><input id="ex18-file" type="file" /><br />
-        <input type="image" align="left" name="ex18-image" src="submitbutton.gif" /><br />
+        <input type="image" align="left" name="ex18-image" src="image-button.png" /><br />
         <input type="button" align="left" name="ex18-button" value="A Button" /><br />
         <input type="reset" name="submitbutton" value="cancel" />
         <input type="submit" name="submitbutton" value="submit" />
@@ -319,7 +321,7 @@ padding: 0 0.5em 0 0;
           <label><input type="checkbox" name="ex19-check2" value="Full" />Full</label>
         </fieldset>
         <label for="ex19-file">File Input</label><input id="ex19-file" type="file" /><br />
-        <input type="image" align="left" name="ex19-image" src="submitbutton.gif" /><br />
+        <input type="image" align="left" name="ex19-image" src="image-button.png" /><br />
         <input type="button" align="left" name="ex19-button" value="A Button" /><br />
         <input type="reset" name="submitbutton" value="cancel" />
         <input type="submit" name="submitbutton" value="submit" />
@@ -344,7 +346,7 @@ padding: 0 0.5em 0 0;
           <label><input type="checkbox" name="ex20-check2" value="Full" />Full</label>
         </fieldset>
         <label for="ex20-file">File Input</label><input id="ex20-file" type="file" /><br />
-        <input type="image" align="left" name="ex20-image" src="submitbutton.gif" /><br />
+        <input type="image" align="left" name="ex20-image" src="image-button.png" /><br />
         <input type="button" align="left" name="ex20-button" value="A Button" /><br />
         <input type="reset" name="submitbutton" value="cancel" />
         <input type="submit" name="submitbutton" value="submit" />
@@ -364,7 +366,6 @@ padding: 0 0.5em 0 0;
   <script type="text/javascript">
 //<![CDATA[
     $(document).superSelectify({additionalElementHash: {jpeg: /[a-zA-Z0-9._+~#:\s-]*a\[href\$=".jpg"\]/gi}});
-    $('#ex6 div.example p + p').addClass('next');
 //]]>
   </script>
 </body>
