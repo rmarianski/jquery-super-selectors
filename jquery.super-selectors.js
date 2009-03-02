@@ -72,7 +72,7 @@
     
     
     for (var className in options.additionalElementHash) {
-      _match_item(options.additionalElementHash[className], className);
+      $(options.additionalElementHash[className]).addClass(className);
     }
 
 
