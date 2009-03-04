@@ -46,7 +46,7 @@
     function _match_item(reg, className) {
       var itemMatch = CSS.match(reg);
       if(itemMatch) itemMatch=itemMatch.join(", ");
-      $(itemMatch).addClass(className);
+      if(itemMatch) $(itemMatch).addClass(className);
     }
     
     _match_item(/[a-zA-Z0-9._+~#:\s-]*:empty/gi, options.emptyClass);
