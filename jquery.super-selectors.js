@@ -44,8 +44,7 @@
   function getMatches(CSS) {
   
     function _match_item(reg, className) {
-      var noNewlines = CSS.replace(/[\n\r]/gi, '')
-      var itemMatch = noNewlines.match(reg);
+      var itemMatch = CSS.replace(/[\n\r]/gi, '').match(reg);
       if(itemMatch) itemMatch=itemMatch.join(", ");
       if(itemMatch) $(itemMatch).addClass(className);
     }
