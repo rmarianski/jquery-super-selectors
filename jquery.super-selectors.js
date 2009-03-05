@@ -79,7 +79,7 @@
     // Check for any imports within the passes CSS
     // Only IE should ever hit this (other browsers 
     //  will return them within ruleIterator)
-    var importedCSS = CSS.match(/([a-zA-Z0-9\.\-_\+]*.css)/gi);
+    var importedCSS = CSS.match(/([a-zA-Z0-9\.\-_\+]*\.css)/gi);
 
     if (importedCSS) {
       var fakeStyleSheet = [];
