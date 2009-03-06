@@ -33,13 +33,18 @@
    resetInputClass: "reset",
    buttonInputClass: "button",
    fileInputClass: "file",
+   hoverClass: "hover",
    manualSelectors: false,
    forceStylesheetParsing: false,
    additionalElementHash: {} /* To allow specification of regular expressions & classes to extend SuperSelectors */
-  };
-  
+  };  
+
   var options = $.extend(defaults, options);
 
+  // Add classes for additional Elements first
+  for (var className in options.additionalElementHash) {  
+     $(options.additionalElementHash[className]).addClass(className);
+  }
   
   function getMatches(CSS) {
   
@@ -47,6 +52,19 @@
       var itemMatch = CSS.replace(/[\n\r]/gi, '').match(reg);
       if(itemMatch) itemMatch=itemMatch.join(", ");
       if(itemMatch) $(itemMatch).addClass(className);
+    }
+
+    function _match_hover(reg, className) {
+      var itemMatch = CSS.replace(/[\n\r]/gi, '').match(reg);
+      if(itemMatch) itemMatch=itemMatch.join(", ");
+      if(itemMatch) $(itemMatch).hover(
+       function() {
+        $(this).addClass(className);
+       },
+       function() {
+        $(this).removeClass(className);
+       }
+      );
     }
     
     _match_item(/[a-zA-Z0-9._+~#:\s-]*:empty/gi, options.emptyClass);
@@ -69,17 +87,14 @@
     _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="reset"\]/gi, options.resetInputClass);
     _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="button"\]/gi, options.buttonInputClass);
     _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="file"\]/gi, options.fileInputClass);
-    
-    
-    for (var className in options.additionalElementHash) {
-      $(options.additionalElementHash[className]).addClass(className);
-    }
 
+		// Also add hover listeners as needed
+    _match_hover(/[a-zA-Z0-9._+~#:\s-]*:hover/gi, options.hoverClass);
 
     // Check for any imports within the passes CSS
     // Only IE should ever hit this (other browsers 
     //  will return them within ruleIterator)
-    var importedCSS = CSS.match(/([a-zA-Z0-9\.\-_\+]*\.css)/gi);
+    var importedCSS = CSS.match(/[a-zA-Z0-9\.\-_\+\s]*import([a-zA-Z0-9\.\-_\+\/]*\.css)/gi);
 
     if (importedCSS) {
       var fakeStyleSheet = [];

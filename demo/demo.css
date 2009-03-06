@@ -91,6 +91,14 @@ table tbody tr.odd {
 background: #f3f3f3;
 }
 
+table tbody tr:hover {
+background: #fefefa;
+}
+
+table tbody tr.hover {
+background: #fefefa;
+}
+
 table td {
 padding: 0.3em 0.8em;
 }
