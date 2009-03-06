@@ -36,10 +36,14 @@
    manualSelectors: false,
    forceStylesheetParsing: false,
    additionalElementHash: {} /* To allow specification of regular expressions & classes to extend SuperSelectors */
-  };
-  
+  };  
+
   var options = $.extend(defaults, options);
 
+  // Add classes for additional Elements first
+  for (var className in options.additionalElementHash) {  
+     $(options.additionalElementHash[className]).addClass(className);
+  }
   
   function getMatches(CSS) {
   
@@ -70,21 +74,10 @@
     _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="button"\]/gi, options.buttonInputClass);
     _match_item(/[a-zA-Z0-9._+~#:\s-]*input\[type="file"\]/gi, options.fileInputClass);
 
-
-    for (var className in options.additionalElementHash) {
-      if (window.console) {
-        console.info("looping over " + options.additionalElementHash[className] + " with a value of " + className);
-      } else {
-       alert("looping over " + options.additionalElementHash[className] + " with a value of " + className);
-      }
-      $(options.additionalElementHash[className]).addClass(className);
-    }
-
-
     // Check for any imports within the passes CSS
     // Only IE should ever hit this (other browsers 
     //  will return them within ruleIterator)
-    var importedCSS = CSS.match(/([a-zA-Z0-9\.\-_\+\s]*import[a-zA-Z0-9\.\-_\+\s]*\.css)/gi);
+    var importedCSS = CSS.match(/[a-zA-Z0-9\.\-_\+\s]*import([a-zA-Z0-9\.\-_\+\/]*\.css)/gi);
 
     if (importedCSS) {
       var fakeStyleSheet = [];
